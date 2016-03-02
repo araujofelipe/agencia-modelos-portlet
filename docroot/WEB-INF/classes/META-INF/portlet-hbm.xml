@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping default-lazy="false" auto-import="false">
+	<import class="br.com.seatecnologia.treinamento.model.Modelo" />
+	<class name="br.com.seatecnologia.treinamento.model.impl.ModeloImpl" table="agenciamodelos_Modelo">
+		<cache usage="read-write" />
+		<id name="modeloId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="groupId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="companyId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="userName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="createDate" type="org.hibernate.type.TimestampType" />
+		<property name="modifiedDate" type="org.hibernate.type.TimestampType" />
+		<property name="nome" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="idade" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="altura" type="com.liferay.portal.dao.orm.hibernate.DoubleType" />
+		<property name="peso" type="com.liferay.portal.dao.orm.hibernate.DoubleType" />
+		<property name="etinia" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+	</class>
+</hibernate-mapping>

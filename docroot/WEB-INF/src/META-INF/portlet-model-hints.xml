@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="br.com.seatecnologia.treinamento.model.Modelo">
+		<field name="modeloId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="userId" type="long" />
+		<field name="userName" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="nome" type="String" />
+		<field name="idade" type="int" />
+		<field name="altura" type="double" />
+		<field name="peso" type="double" />
+		<field name="etinia" type="int" />
+	</model>
+</model-hints>

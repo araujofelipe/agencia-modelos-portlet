@@ -1,0 +1,1 @@
+create index IX_1C603C33 on agenciamodelos_Modelo (nome, groupId);

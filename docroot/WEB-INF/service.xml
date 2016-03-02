@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 6.2.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_6_2_0.dtd">
+<service-builder package-path="br.com.seatecnologia.treinamento">
+	<author>felipearaujo</author>
+	<namespace>agenciamodelos</namespace>
+
+	<entity name="Modelo" local-service="true">
+		
+		<!-- PK fields -->
+
+		<column name="modeloId" type="long" primary="true" />
+		
+		<!-- Group instance -->
+
+		<column name="groupId" type="long" />
+
+		<!-- Audit fields -->
+
+		<column name="companyId" type="long" />
+		<column name="userId" type="long" />
+		<column name="userName" type="String" />
+		<column name="createDate" type="Date" />
+		<column name="modifiedDate" type="Date" />
+
+		<!-- Other fields -->
+
+
+		<column name="nome" type="String" />
+		<column name="idade" type="int" />
+		<column name="altura" type="double" />
+		<column name="peso" type="double" />
+		<column name="etinia" type="int" />
+
+		<!-- Order -->
+
+		<order by="asc">
+			<order-column name="nome" />
+		</order>
+
+		<!-- Finder methods -->
+
+		<finder name="NomeAndGroupId" return-type="Collection">
+			<finder-column name="nome" />
+			<finder-column name="groupId" />
+		</finder>
+	</entity>
+</service-builder>
