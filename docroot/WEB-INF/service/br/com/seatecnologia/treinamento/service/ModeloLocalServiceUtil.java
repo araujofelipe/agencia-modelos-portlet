@@ -280,6 +280,11 @@ public class ModeloLocalServiceUtil {
 		return getService().getAllModelos();
 	}
 
+	public static int countAllModelos()
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().countAllModelos();
+	}
+
 	public static void clearService() {
 		_service = null;
 	}

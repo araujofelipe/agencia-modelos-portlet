@@ -123,6 +123,10 @@ public class ModeloLocalServiceClpInvoker {
 		_methodName41 = "getAllModelos";
 
 		_methodParameterTypes41 = new String[] {  };
+
+		_methodName42 = "countAllModelos";
+
+		_methodParameterTypes42 = new String[] {  };
 	}
 
 	public Object invokeMethod(String name, String[] parameterTypes,
@@ -236,6 +240,11 @@ public class ModeloLocalServiceClpInvoker {
 			return ModeloLocalServiceUtil.getAllModelos();
 		}
 
+		if (_methodName42.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes42, parameterTypes)) {
+			return ModeloLocalServiceUtil.countAllModelos();
+		}
+
 		throw new UnsupportedOperationException();
 	}
 
@@ -279,4 +288,6 @@ public class ModeloLocalServiceClpInvoker {
 	private String[] _methodParameterTypes40;
 	private String _methodName41;
 	private String[] _methodParameterTypes41;
+	private String _methodName42;
+	private String[] _methodParameterTypes42;
 }

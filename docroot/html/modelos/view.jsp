@@ -1,18 +1,25 @@
-<%@ taglib uri="http://java.sun.com/portlet_2_0" prefix="portlet" %>
-
-<portlet:defineObjects />
+<%@include file="/html/init.jsp" %>
 <portlet:actionURL name="adicionarModelo" var="adicionarModeloURL" />
-<%  %>
-<form name='<portlet:namespace/>fm' method="post" action="<%= adicionarModeloURL.toString() %>">
-	Nome: <input type="text" name='<portlet:namespace/>nome' /> <br/>
-	Idade: <input type="text" name='<portlet:namespace/>idade' /> <br/>
-	Altura: <input type="text" name='<portlet:namespace/>altura' /><br/>
-	Peso: <input type="text" name='<portlet:namespace/>peso' /><br/>
-	Etnia: <select name='<portlet:namespace/>etnia'>
-		<option value="1">Loira</option>
-		<option value="1">Morena</option>
-		<option value="3">Ruiva</option>
-		<option value="4">Asiática</option>
-	</select><br/>
-	<input type="submit" name='<portlet:namespace/>submit'/>
-</form>
+
+<portlet:renderURL var="addModeloURL">
+			<portlet:param name="jspPage" value="/html/modelos/edit_modelo.jsp" />
+			<portlet:param name="redirect" value="<%= redirect %>" />
+</portlet:renderURL>
+<aui:button-row>
+	<aui:button onClick="${addModeloURL}" value="Adicionar nova Modelo" />
+</aui:button-row>
+
+<liferay-ui:search-container delta="10" emptyResultsMessage="no-users-were-found">
+<liferay-ui:search-container-results
+		results="${modelos }" 	total="${totalModelos }"
+	/>
+	<liferay-ui:search-container-row className="br.com.seatecnologia.treinamento.model.Modelo" keyProperty="modeloId" modelVar="modelo" escapedModel="<%=true %>">
+		<liferay-ui:search-container-column-text
+			name="nome"
+			value="${modelo.nome }"
+		/>
+		<liferay-ui:search-container-column-jsp path="/html/modelos/actions_modelo.jsp" />
+	</liferay-ui:search-container-row>
+		<liferay-ui:search-iterator />
+	
+</liferay-ui:search-container>

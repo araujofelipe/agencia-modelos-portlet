@@ -4,6 +4,7 @@ import br.com.seatecnologia.treinamento.model.Modelo;
 import br.com.seatecnologia.treinamento.model.impl.ModeloImpl;
 import br.com.seatecnologia.treinamento.service.ModeloLocalServiceUtil;
 
+import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.util.ParamUtil;
 import com.liferay.util.bridges.mvc.MVCPortlet;
@@ -24,22 +25,18 @@ public class ModelosPortlet extends MVCPortlet {
  
 	public void adicionarModelo(ActionRequest actionRequest,
 			ActionResponse actionResponse) throws IOException, PortletException, SystemException {
-		String nome = ParamUtil.getString(actionRequest, "nome");
-		Modelo modelo = new ModeloImpl();
-		modelo.setNome(nome);
+		Modelo modelo = getModeloFromRequest(actionRequest);
 		ModeloLocalServiceUtil.addModelo(modelo);
 		sendRedirect(actionRequest, actionResponse);
 	}
-	
+
 	
 	public void doView(RenderRequest renderRequest,
 			RenderResponse renderResponse) throws IOException, PortletException {
 		try {
 			List<Modelo> modelos = ModeloLocalServiceUtil.getAllModelos();
-			for (Modelo modelo : modelos) {
-				System.out.println(modelo.getNome());
-			}
 			renderRequest.setAttribute("modelos", modelos);
+			renderRequest.setAttribute("totalModelos", modelos.size());
 			
 		} catch (SystemException e) {
 			// TODO Auto-generated catch block
@@ -48,7 +45,27 @@ public class ModelosPortlet extends MVCPortlet {
 		super.doView(renderRequest, renderResponse);
 	}
 	
+	public void atualizarModelo(ActionRequest actionRequest,
+			ActionResponse actionResponse) throws IOException, PortletException, SystemException {
+		Modelo modelo = getModeloFromRequest(actionRequest);
+		ModeloLocalServiceUtil.updateModelo(modelo);
+	}
 	
+	public void deleteModelo(ActionRequest actionRequest,
+			ActionResponse actionResponse) throws IOException, PortletException, PortalException, SystemException {
+		Modelo modelo = getModeloFromRequest(actionRequest);
+		ModeloLocalServiceUtil.deleteModelo(modelo.getModeloId());
+		sendRedirect(actionRequest, actionResponse);
+	}
 	
+
+	private Modelo getModeloFromRequest(ActionRequest actionRequest) {
+		String nome = ParamUtil.getString(actionRequest, "nome");
+		long id = ParamUtil.getLong(actionRequest, "modeloId");
+		Modelo modelo = new ModeloImpl();
+		modelo.setNome(nome);
+		modelo.setModeloId(id);
+		return modelo;
+	}
 	
 }

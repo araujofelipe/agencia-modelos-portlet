@@ -51,7 +51,11 @@ public class ModeloLocalServiceImpl extends ModeloLocalServiceBaseImpl {
 	}
 	
 	public List<Modelo> getAllModelos() throws SystemException{
-		return modeloPersistence.findAll();
+		return modeloPersistence.findAll(); 
+	}
+	
+	public int countAllModelos() throws SystemException {
+		return modeloPersistence.countAll();
 	}
 	
 }

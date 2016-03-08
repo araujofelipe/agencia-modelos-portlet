@@ -257,4 +257,7 @@ public interface ModeloLocalService extends BaseLocalService,
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public java.util.List<br.com.seatecnologia.treinamento.model.Modelo> getAllModelos()
 		throws com.liferay.portal.kernel.exception.SystemException;
+
+	public int countAllModelos()
+		throws com.liferay.portal.kernel.exception.SystemException;
 }

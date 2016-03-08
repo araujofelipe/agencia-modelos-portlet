@@ -290,6 +290,12 @@ public class ModeloLocalServiceWrapper implements ModeloLocalService,
 		return _modeloLocalService.getAllModelos();
 	}
 
+	@Override
+	public int countAllModelos()
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _modeloLocalService.countAllModelos();
+	}
+
 	/**
 	 * @deprecated As of 6.1.0, replaced by {@link #getWrappedService}
 	 */
