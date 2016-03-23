@@ -17,8 +17,16 @@ package br.com.seatecnologia.treinamento.service.impl;
 import br.com.seatecnologia.treinamento.model.Modelo;
 import br.com.seatecnologia.treinamento.service.base.ModeloLocalServiceBaseImpl;
 
+import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
+import com.liferay.portal.kernel.search.Indexer;
+import com.liferay.portal.kernel.search.IndexerRegistryUtil;
+import com.liferay.portal.kernel.search.SearchException;
+import com.liferay.portal.kernel.util.ContentTypes;
+import com.liferay.portal.service.ServiceContext;
+import com.liferay.portlet.asset.service.AssetEntryLocalServiceUtil;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -47,7 +55,28 @@ public class ModeloLocalServiceImpl extends ModeloLocalServiceBaseImpl {
 		Long modeloId = counterLocalService.increment(Modelo.class.getName());
 		modelo.setModeloId(modeloId);
 		modelo.setNew(true);
-		return super.addModelo(modelo);
+		Indexer indexer = IndexerRegistryUtil.getIndexer(Modelo.class.getName());
+		try {
+			indexer.reindex(modelo);
+			return super.addModelo(modelo);
+		} catch (SearchException e) {
+			e.printStackTrace();
+			return null;
+		}
+		
+	}
+	
+	public Modelo addModelo(Modelo modelo, ServiceContext serviceContext) throws SystemException, PortalException {
+		modelo.setGroupId(serviceContext.getScopeGroupId());
+		modelo.setCompanyId(serviceContext.getCompanyId());
+		Modelo resource = addModelo(modelo);
+		AssetEntryLocalServiceUtil.updateEntry(
+				resource.getUserId(), resource.getGroupId(), Modelo.class.getName(),
+				resource.getModeloId(), serviceContext.getUuid(), 0, new long[0],
+				new String[0], true, null, null, new Date(), null,
+				ContentTypes.TEXT_HTML, resource.getNome(), null, "", null, null,
+				0, 0, null, false);
+		return resource;
 	}
 	
 	public List<Modelo> getAllModelos() throws SystemException{

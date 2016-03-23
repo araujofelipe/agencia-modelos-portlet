@@ -5,4 +5,8 @@
 	<language-properties>content/Language.properties</language-properties>
 	<language-properties>content/Language_pt_BR.properties</language-properties>
 	<custom-jsp-dir>/custom_jsps</custom-jsp-dir>
+	<indexer-post-processor>
+		<indexer-class-name>com.liferay.portal.model.User</indexer-class-name>
+		<indexer-post-processor-impl>br.com.seatecnologia.treinamento.hook.UserPostProcessor</indexer-post-processor-impl>
+	</indexer-post-processor>
 </hook>

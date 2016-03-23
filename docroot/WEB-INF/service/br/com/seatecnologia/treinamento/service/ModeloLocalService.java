@@ -254,6 +254,12 @@ public interface ModeloLocalService extends BaseLocalService,
 		java.lang.String[] parameterTypes, java.lang.Object[] arguments)
 		throws java.lang.Throwable;
 
+	public br.com.seatecnologia.treinamento.model.Modelo addModelo(
+		br.com.seatecnologia.treinamento.model.Modelo modelo,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public java.util.List<br.com.seatecnologia.treinamento.model.Modelo> getAllModelos()
 		throws com.liferay.portal.kernel.exception.SystemException;

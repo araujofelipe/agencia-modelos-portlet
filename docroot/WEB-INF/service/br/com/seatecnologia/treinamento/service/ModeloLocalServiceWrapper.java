@@ -285,6 +285,15 @@ public class ModeloLocalServiceWrapper implements ModeloLocalService,
 	}
 
 	@Override
+	public br.com.seatecnologia.treinamento.model.Modelo addModelo(
+		br.com.seatecnologia.treinamento.model.Modelo modelo,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _modeloLocalService.addModelo(modelo, serviceContext);
+	}
+
+	@Override
 	public java.util.List<br.com.seatecnologia.treinamento.model.Modelo> getAllModelos()
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _modeloLocalService.getAllModelos();

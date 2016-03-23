@@ -7,6 +7,8 @@ import br.com.seatecnologia.treinamento.service.ModeloLocalServiceUtil;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.util.ParamUtil;
+import com.liferay.portal.service.ServiceContext;
+import com.liferay.portal.service.ServiceContextFactory;
 import com.liferay.util.bridges.mvc.MVCPortlet;
 
 import java.io.IOException;
@@ -24,9 +26,10 @@ import javax.portlet.RenderResponse;
 public class ModelosPortlet extends MVCPortlet {
  
 	public void adicionarModelo(ActionRequest actionRequest,
-			ActionResponse actionResponse) throws IOException, PortletException, SystemException {
+			ActionResponse actionResponse) throws IOException, PortletException, SystemException, PortalException {
 		Modelo modelo = getModeloFromRequest(actionRequest);
-		ModeloLocalServiceUtil.addModelo(modelo);
+		ServiceContext serviceContext =  ServiceContextFactory.getInstance(actionRequest);
+		ModeloLocalServiceUtil.addModelo(modelo,serviceContext);
 		sendRedirect(actionRequest, actionResponse);
 	}
 

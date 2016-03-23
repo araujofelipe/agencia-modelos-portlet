@@ -275,6 +275,14 @@ public class ModeloLocalServiceUtil {
 		return getService().invokeMethod(name, parameterTypes, arguments);
 	}
 
+	public static br.com.seatecnologia.treinamento.model.Modelo addModelo(
+		br.com.seatecnologia.treinamento.model.Modelo modelo,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getService().addModelo(modelo, serviceContext);
+	}
+
 	public static java.util.List<br.com.seatecnologia.treinamento.model.Modelo> getAllModelos()
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return getService().getAllModelos();

@@ -120,13 +120,20 @@ public class ModeloLocalServiceClpInvoker {
 				"br.com.seatecnologia.treinamento.model.Modelo"
 			};
 
-		_methodName41 = "getAllModelos";
+		_methodName41 = "addModelo";
 
-		_methodParameterTypes41 = new String[] {  };
+		_methodParameterTypes41 = new String[] {
+				"br.com.seatecnologia.treinamento.model.Modelo",
+				"com.liferay.portal.service.ServiceContext"
+			};
 
-		_methodName42 = "countAllModelos";
+		_methodName42 = "getAllModelos";
 
 		_methodParameterTypes42 = new String[] {  };
+
+		_methodName43 = "countAllModelos";
+
+		_methodParameterTypes43 = new String[] {  };
 	}
 
 	public Object invokeMethod(String name, String[] parameterTypes,
@@ -237,11 +244,17 @@ public class ModeloLocalServiceClpInvoker {
 
 		if (_methodName41.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes41, parameterTypes)) {
-			return ModeloLocalServiceUtil.getAllModelos();
+			return ModeloLocalServiceUtil.addModelo((br.com.seatecnologia.treinamento.model.Modelo)arguments[0],
+				(com.liferay.portal.service.ServiceContext)arguments[1]);
 		}
 
 		if (_methodName42.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes42, parameterTypes)) {
+			return ModeloLocalServiceUtil.getAllModelos();
+		}
+
+		if (_methodName43.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes43, parameterTypes)) {
 			return ModeloLocalServiceUtil.countAllModelos();
 		}
 
@@ -290,4 +303,6 @@ public class ModeloLocalServiceClpInvoker {
 	private String[] _methodParameterTypes41;
 	private String _methodName42;
 	private String[] _methodParameterTypes42;
+	private String _methodName43;
+	private String[] _methodParameterTypes43;
 }

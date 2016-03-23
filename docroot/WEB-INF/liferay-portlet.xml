@@ -6,7 +6,10 @@
 	<portlet>
 		<portlet-name>modelos</portlet-name>
 		<icon>/icon.png</icon>
+		<indexer-class>br.com.seatecnologia.treinamento.search.ModeloIndexer</indexer-class>
+		<asset-renderer-factory>br.com.seatecnologia.treinamento.asset.ModeloAssetRendererFactory</asset-renderer-factory>
 		<header-portlet-css>/css/main.css</header-portlet-css>
+		
 		<footer-portlet-javascript>
 			/js/main.js
 		</footer-portlet-javascript>

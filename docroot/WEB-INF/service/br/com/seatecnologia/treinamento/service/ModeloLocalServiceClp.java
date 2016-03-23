@@ -114,13 +114,20 @@ public class ModeloLocalServiceClp implements ModeloLocalService {
 
 		_methodParameterTypes17 = new String[] { "java.lang.String" };
 
-		_methodName19 = "getAllModelos";
+		_methodName19 = "addModelo";
 
-		_methodParameterTypes19 = new String[] {  };
+		_methodParameterTypes19 = new String[] {
+				"br.com.seatecnologia.treinamento.model.Modelo",
+				"com.liferay.portal.service.ServiceContext"
+			};
 
-		_methodName20 = "countAllModelos";
+		_methodName20 = "getAllModelos";
 
 		_methodParameterTypes20 = new String[] {  };
+
+		_methodName21 = "countAllModelos";
+
+		_methodParameterTypes21 = new String[] {  };
 	}
 
 	@Override
@@ -674,13 +681,53 @@ public class ModeloLocalServiceClp implements ModeloLocalService {
 	}
 
 	@Override
+	public br.com.seatecnologia.treinamento.model.Modelo addModelo(
+		br.com.seatecnologia.treinamento.model.Modelo modelo,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName19,
+					_methodParameterTypes19,
+					new Object[] {
+						ClpSerializer.translateInput(modelo),
+						
+					ClpSerializer.translateInput(serviceContext)
+					});
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+				throw (com.liferay.portal.kernel.exception.PortalException)t;
+			}
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (br.com.seatecnologia.treinamento.model.Modelo)ClpSerializer.translateOutput(returnObj);
+	}
+
+	@Override
 	public java.util.List<br.com.seatecnologia.treinamento.model.Modelo> getAllModelos()
 		throws com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName19,
-					_methodParameterTypes19, new Object[] {  });
+			returnObj = _invokableLocalService.invokeMethod(_methodName20,
+					_methodParameterTypes20, new Object[] {  });
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -707,8 +754,8 @@ public class ModeloLocalServiceClp implements ModeloLocalService {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName20,
-					_methodParameterTypes20, new Object[] {  });
+			returnObj = _invokableLocalService.invokeMethod(_methodName21,
+					_methodParameterTypes21, new Object[] {  });
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -770,4 +817,6 @@ public class ModeloLocalServiceClp implements ModeloLocalService {
 	private String[] _methodParameterTypes19;
 	private String _methodName20;
 	private String[] _methodParameterTypes20;
+	private String _methodName21;
+	private String[] _methodParameterTypes21;
 }
